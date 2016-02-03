@@ -1,0 +1,50 @@
+#!/usr/bin/python
+
+#Created by : Aharon Nadav#
+
+#####Url#####
+
+import requests
+r=""
+code=""
+def url():
+    url="http://qa-apache-testing-ubu-01.dev.kaltura.com/p/1091/sp/109100/embedIframeJs/uiconf_id/15101821/partner_id/1091"
+    try:
+        global r
+        global code
+        r = requests.head(url)
+        #print(r.status_code)
+        code=r.status_code
+        #prints the int of the status code. Find more at httpstatusrappers.com :)
+    except requests.ConnectionError:
+        print("failed to connect")
+
+url()
+u=code
+up="The site is available"
+down="The site is unavailable"
+status=""
+def check():
+    global up
+    global down
+    global status
+    if(u==200):
+        status=up
+    else:
+        status=down
+check()
+site=status
+#!/usr/bin/env python
+print "Content-Type: text/html"
+print
+print """\
+<html>
+  <head>
+
+
+ </head>
+<body>
+<h1 align="right"><b>%s</h1>
+<img src="okay.png" align="right" style="width:304px;height:228px;">
+</body>
+</html>"""%(site)
