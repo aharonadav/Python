@@ -1,0 +1,19 @@
+#!/usr/bin/python
+############################################################################################################################################################################################################################################Monitoring System###################################################################################
+#Created by : Aharon Nadav#
+
+#####Memory#####
+import subprocess
+import os
+import psutil
+
+def index():
+        mem=psutil.phymem_usage()
+        print "Total=%d" % mem.total
+        print "Free= %d" % mem.free
+        print "Used=%d" % mem.used
+        print "Percent=%d"% mem.percent
+        f_percent=int(100-mem.percent)
+        print "You have left %d %% "%f_percent
+
+index()
