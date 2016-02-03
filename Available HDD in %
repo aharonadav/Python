@@ -1,0 +1,25 @@
+import os
+from collections import namedtuple
+
+DiskUsage = namedtuple('DiskUsage', 'total used free')
+
+def disk_usage(path):
+    """Return disk usage statistics about the given path.
+
+    Will return the namedtuple with attributes: 'total', 'used' and 'free',
+    which are the amount of total, used and free space, in bytes.
+    """
+    st = os.statvfs(path)
+    free = (st.f_bavail * st.f_frsize)/ 1024
+    total = st.f_blocks * st.f_frsize
+    used = (st.f_blocks - st.f_bfree) * st.f_frsize
+    return DiskUsage(total, used, free)
+a=disk_usage("/")
+#print a
+disk=os.statvfs("/")
+totalAvailSpace = float(disk.f_bsize*disk.f_bfree)
+#print "available space: %d Bytes = %.2f KBytes = %.2f MBytes = %.2f GBytes" % (totalAvailSpace, totalAvailSpace/1024, totalAvailSpace/1024/1024, totalAvailSpace/1024/1024/1024)
+totalBytes = float(disk.f_bsize*disk.f_blocks)
+percent=float(100-((totalAvailSpace*100)/totalBytes))
+print "%d %% available"%(percent)
+~
