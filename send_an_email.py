@@ -8,11 +8,11 @@ from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 
-emailfrom = "dev@onetwotrade.com"
-emailto = "dev@onetwotrade.com"
-fileToSend = "/home/aharon/scripts/python/gitlab.py"
-username = "dev@onetwotrade.com"
-password = "OneTwoTrade!"
+emailfrom = ""
+emailto = ""
+fileToSend = ""
+username = ""
+password = ""
 
 msg = MIMEMultipart()
 msg["From"] = emailfrom
